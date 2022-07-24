@@ -1,5 +1,5 @@
 import { useState } from "react"
-
+const { REACT_APP_MY_BBKEY } = process.env;
 function Input({ setProduct }) {
    const [productname, setProductname] = useState('')
 
@@ -11,7 +11,7 @@ function Input({ setProduct }) {
    }
 const handleSubmit = async (e) => {
     e.preventDefault()
-    const response = await fetch(`https://api.bestbuy.com/v1/products/${productname}.json?show=sku,name,regularPrice,manufacturer,salePrice,image,url,shortDescription&apiKey=(?)`)
+    const response = await fetch(`https://api.bestbuy.com/v1/products/${productname}.json?show=sku,name,regularPrice,manufacturer,salePrice,image,url,shortDescription&apiKey=${process.env.REACT_APP_MY_BBKEY}`)
     const data = await response.json()
 
     setProduct(data)
@@ -22,9 +22,10 @@ const handleSubmit = async (e) => {
 }
 
     return(
-        <form onSubmit={handleSubmit}>
-            <input onChange={handleChange}placeholder="product"/>
-            <button type="submit">Search</button>
+        
+        <form class="d-flex" onSubmit={handleSubmit}>
+            <input class="form-control me-2" onChange={handleChange}placeholder="product"/>
+            <button class="btn btn-outline-success" >Search</button>
             
         </form>
     )

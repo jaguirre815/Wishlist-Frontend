@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import Input from "./Components/Input";
 import Display from "./Components/Display";
+import './App.css'
+
 
 function App() {
   const [product, setProduct] = useState(null)
