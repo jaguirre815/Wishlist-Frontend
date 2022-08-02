@@ -36,20 +36,21 @@ import React, { useState, useEffect } from 'react';
                 
                
                 useEffect(() => {handleSubmit()}, [])
-                let faves = []
-                for(let i = 0; i<favorites.length; i++) {
-                    faves.push(
+                    let faves = []
+                    for(let i = 0; i<favorites.length; i++) {
+                        faves.push(
                             
                         <div key = {i} className="container">
+                            
                             <div className="row">
                                 
                                 <article className="u-shadow-v18 g-bg-white text-center rounded g-px-20 g-py-40 g-mb-5">
-                                <img className="d-inline-block img-fluid mb-4" src = {favorites[i]?.image} alt='product'/>
-                                <h4 className="h5 g-color-black g-font-weight-600 g-mb-10">{favorites[i]?.name}</h4>
-                                <p>My favorite Products</p>
-                                <span className="d-block g-color-primary g-font-size-16">Retail Price ${favorites[i]?.regularPrice}</span>
-                                <span className="d-block g-color-primary g-font-size-16">Sale Price ${favorites[i]?.salePrice}</span>
-                                </article>
+                                    <img className="d-inline-block img-fluid mb-4" src = {favorites[i]?.image} alt='product'/>
+                                        <h4 className="h5 g-color-black g-font-weight-600 g-mb-10">{favorites[i]?.name}</h4>
+                                            <p>My favorite Products</p>
+                                    <span className="d-block g-color-primary g-font-size-16">Retail Price ${favorites[i]?.regularPrice}</span>
+                                        <span className="d-block g-color-primary g-font-size-16">Sale Price ${favorites[i]?.salePrice}</span>
+                                 </article>
                                     <button onClick={deleteFavorite(i)} className="btn btn-primary">Delete</button>
                             </div>
                         
@@ -63,8 +64,8 @@ import React, { useState, useEffect } from 'react';
                     
                     faves
              
-        )
-        }
+                )
+    }
 
             
             

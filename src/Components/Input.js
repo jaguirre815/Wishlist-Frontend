@@ -10,17 +10,14 @@ function Input({ setProduct }) {
    const clear = () => {
         setProduct(null)
    }
-const handleSubmit = async (e) => {
+    const handleSubmit = async (e) => {
     e.preventDefault()
     const response = await fetch(`https://api.bestbuy.com/v1/products/${productname}.json?show=sku,name,regularPrice,manufacturer,salePrice,image,url,addToCartUrl,shortDescription&apiKey=${process.env.REACT_APP_MY_BBKEY}`)
     const data = await response.json()
 
     setProduct(data)
     setProductname('')
-//add button to save to wishlist
-//get users wishlist
 
-    // console.log(data)
 }
 
 

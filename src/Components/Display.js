@@ -47,11 +47,12 @@ function Display({  }) {
        }
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const response = await fetch(`https://api.bestbuy.com/v1/products/${product}.json?show=sku,url,shortDescription,salePrice,regularPrice,name,manufacturer,image&apiKey=${process.env.REACT_APP_MY_BBKEY}`)
+        const response = await fetch(`https://api.bestbuy.com/v1/products/${product}.json?show=sku,url,shortDescription,salePrice,regularPrice,name,addToCartUrl,image&apiKey=${process.env.REACT_APP_MY_BBKEY}`)
         const data = await response.json()
         console.log(data)
         
         setProduct(data)
+        
         //setProduct([...product, data])
     //add button to save to wishlist
     //get users wishlist
@@ -59,29 +60,36 @@ function Display({  }) {
         // console.log(data)
     }
     
+    
     return (
-        <nav>
-        <form className="d-flex" onSubmit={handleSubmit}>
-        <span className="placeholder col-3">
-            <input className="form-control me-4" onChange={handleChange}placeholder="product"/></span>
-                <button className="btn btn-outline-success" >Search</button>
-                
-    </form>
+        <>
+        <div className="container-fluid">
+            <header className="container-fluid col-8">
+                <h1>Wish List</h1>
+            </header>
+            <div>
+                <form className="container-fluid col-6" onSubmit={handleSubmit}>
+                        <input className="form-control me-8" id="submitSKU" onChange={handleChange} placeholder="Enter Best Buy product SKU" />
+                    <div className="d-grid gap-2">
+                        <button className="btn btn-success" >Search</button>
+                    </div>
+                </form>
+            </div>
         
-        <div className="container-fluid col-8">
-              <h1>{product.name}</h1>
-              <img src = {product.image} alt='product'/>
-              <h2>Was ${product.regularPrice} </h2>
-              <h2>Now Price ${product.salePrice}</h2>
-              <h3>{product.shortDescription}</h3>
-             
-              <a href={product.addToCartUrl} target="blank">add to cart</a>
-              <br/>
-              
-                <button className="btn btn-primary" onClick={addFavorites}>Add to Favorites</button>
+            <div className="container-fluid col-6">
+                <div className="card">
+                <h2>{product.name}</h2>
+                    <img src={product.image} alt='product' />
+                    <h4>Was ${product.regularPrice} </h4>
+                    <h3>Now Price ${product.salePrice}</h3>
+                    <p>{product.shortDescription}</p>
+                        <button className="btn btn-outline-success" onClick={addFavorites}>Add to WishList</button>
+                        <a href={product.addToCartUrl} className="btn btn-outline-primary" target="blank" role="button">Add to Best Buy Cart</a>
+                    </div>
+            </div>
         </div>
-        </nav>
-        
+        </>       
+    
         
         
         

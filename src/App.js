@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Input from "./Components/Input";
+//import Input from "./Components/Input";
 import Display from "./Components/Display";
 import './App.css'
 import Favorites from "./Components/favorites";
@@ -26,6 +26,7 @@ useEffect(() => {
     <Routes>
       <Route path="/" element={<Display/>}/>
         <Route path="/favorites" element={<Favorites />} />
+        
       
     </Routes>
   </BrowserRouter>
@@ -38,7 +39,4 @@ useEffect(() => {
 
 export default App;
 
-// {/* <>
-// <Input setProduct={setProduct}/>
-// {data}
-// </> */}
+
