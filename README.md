@@ -1,4 +1,4 @@
-*[Wishlist Search App]
+# Wishlist Search App
 
 Uses the Bestbuy API to mock data and rendered. Users can add items to a wishlist that they created and update as well.
 
