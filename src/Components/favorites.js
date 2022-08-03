@@ -4,9 +4,10 @@ import React, { useState, useEffect } from 'react';
  
 
     function Favorites({ }) {
+        const name = window.sessionStorage.getItem('name')
         const [favorites, setFavorites] = useState([])  
             const handleSubmit = async () => {
-                const response = await fetch(`https://wisc-wish-list-app.herokuapp.com/favorites/user-favorites/name/joel`)
+                const response = await fetch(`https://wisc-wish-list-app.herokuapp.com/favorites/user-favorites/name/${name}`)
                 
                 const data = await response.json()
                 console.log(data.favorites)
@@ -29,7 +30,7 @@ import React, { useState, useEffect } from 'react';
                         method: 'PUT',
                         body: JSON.stringify(favorites)
                     };
-                    fetch('https://wisc-wish-list-app.herokuapp.com/favorites/user-favorites/name/joel', requestFavorites)
+                    fetch(`https://wisc-wish-list-app.herokuapp.com/favorites/user-favorites/name/${name}`, requestFavorites)
                     .then(response => window.location.reload())
                 }
                 
@@ -37,10 +38,12 @@ import React, { useState, useEffect } from 'react';
                
                 useEffect(() => {handleSubmit()}, [])
                     let faves = []
+                    faves.push(<a href= "/" className="btn btn-outline-primary" target="blank" role="button">Home</a>)
                     for(let i = 0; i<favorites.length; i++) {
                         faves.push(
                             
                         <div key = {i} className="container">
+                            
                             
                             <div className="row">
                                 
@@ -55,6 +58,7 @@ import React, { useState, useEffect } from 'react';
                             </div>
                         
                         </div>
+                        
                     )
                 }
 
@@ -63,6 +67,7 @@ import React, { useState, useEffect } from 'react';
                 return (
                     
                     faves
+                    
              
                 )
     }
