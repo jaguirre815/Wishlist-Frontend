@@ -1,5 +1,7 @@
-Wishlist Search App
+#Wishlist Search App
+
 Uses the Bestbuy API to mock data and rendered. Users can add items to a wishlist that they created and update as well.
+
 1. Click New User to create a user
 2. Find a sku from Bestbuy Homepage
 3. Type in search and submit
